@@ -1,0 +1,23 @@
+/** @format */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply font-space-mono text-steel-blue;
+}
+/* body {
+  @apply bg-light-sky;
+} */
+.btn {
+  /* sm: */
+  @apply bg-blue-primary h-[2.875em] w-[5.25em] text-pure-white text-sm flex items-center justify-center rounded-[10px] mx-[0.438em] mr-[10] hover:bg-blue-secondary
+  /* md: */
+  sm:w-[6.625rem] sm:h-[3.125em] sm:mx-[0.625rem] sm:text-base;
+  /* @apply bg-blue-primary text-pure-white px-4 py-6 my-2 mx-[0.438em] mr-[10] rounded-[10px] text-sm
+  flex items-center hover:bg-blue-secondary; */
+}
+.parent-div > div {
+  @apply flex flex-col items-center;
+}
