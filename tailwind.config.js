@@ -21,6 +21,15 @@ export default {
       // }
     },
     extend: {
+      keyframes: {
+        colorChange: {
+          '0%, 100%': { backgroundColor: '#697c9a' },
+          '50%': { backgroundColor: '#92a4c1' },
+        },
+      },
+      animation: {
+        colorChange: 'colorChange 3s ease-in-out infinite',
+      },
       screens: {
         'xs': '375px',
         'sm': '768px',
