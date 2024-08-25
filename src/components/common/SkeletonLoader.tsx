@@ -14,7 +14,7 @@ const SkeletonLoader = () => {
             <div className="h-9 animate-colorChange rounded-[10px]"></div>
           </header>
 
-          <section className="h-9 animate-colorChange sm:text-[0.938rem] mb-[1.438rem] sm:mb-[2rem] col-span-2 md:col-start-2 rounded-[10px]">
+          <section className="h-9 animate-colorChange sm:text-[0.938rem] mb-[1.438rem] sm:mb-[2rem] col-span-2 md:col-start-2 rounded-[10px] mt-4">
           </section>
           {/* md:col-start-1 md:col-end-2 */}
           <section className="h-[85px] rounded-[10px] animate-colorChange  sm:pl-6 gap-5 sm:gap-20 mb-6 sm:mb-[2rem] col-span-2 md:col-start-2">

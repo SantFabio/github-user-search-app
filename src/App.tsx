@@ -1,12 +1,12 @@
 
 // import useFetch from "./data/hooks/useFetch";
 import { ThemeToggle } from "./components/common/ThemeToggle";
-// import MainContent from "./components/common/MainContent";
+import MainContent from "./components/common/MainContent";
 // import { useState } from "react";
 import SkeletonLoader from "./components/common/SkeletonLoader";
 import search from "./assets/icon-search.svg"
-import { useState } from "react";
-// import useFetch from "./data/hooks/useFetch";
+import { useRef, useState } from "react";
+import useFetch from "./data/hooks/useFetch";
 export interface UserData {
   login: string;
   avatar_url: string;
@@ -34,17 +34,20 @@ export interface UserData {
 }
 
 function App() {
-  // const { data, loading, error  } = useFetch<UserData>('https://api.github.com/users/SantFabio');
-  const [inputValue, setInputValue] = useState<string>("");
-
+  const [inputValue, setInputValue] = useState<HTMLInputElement | string | undefined>("");
+  const { data, loading, error  } = useFetch<UserData>(`https://api.github.com/users/${inputValue === ""? "octocat" : inputValue}`);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  
   const userFinder = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(inputValue);
-    setInputValue('');
+    setInputValue(inputRef.current?.value)
+    if (inputRef.current) {
+      inputRef.current.value = ""; 
+    }
   }
-  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value)
-  }
+  // const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setInputValue(event.target.value)
+  // }
 
   return (
     <>
@@ -60,13 +63,13 @@ function App() {
             <label className="flex justify-center items-center pl-4 pr-2 sm:w-20" htmlFor="search">
               <img src={search} alt="search" className="w-5 h-5 object-contain sm:h-6 sm:w-6"/>
             </label>
-            <input className="w-[60%] sm:w-[70%] placeholder:text-[13px] sm:placeholder:text-[18px] dark:placeholder:text-pure-white border-none focus:outline-none bg-transparent " type="text" name="search" value={inputValue} onChange={handleInput} placeholder="Search GitHub username…"/>
+            <input className="w-[60%] sm:w-[70%] placeholder:text-[13px] sm:placeholder:text-[18px] dark:placeholder:text-pure-white border-none focus:outline-none bg-transparent " type="text" name="search" ref={inputRef} placeholder="Search GitHub username…"/>
             <button className="btn">Search</button>
           </div>
         </form>
       </section>
-        {/* <MainContent data={data} /> */}
-        <SkeletonLoader />
+        {!loading ? <MainContent data={data} /> : 
+        <SkeletonLoader />}
       </div>
     </div>
     </>

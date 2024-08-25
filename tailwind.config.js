@@ -23,8 +23,8 @@ export default {
     extend: {
       keyframes: {
         colorChange: {
-          '0%, 100%': { backgroundColor: '#697c9a' },
-          '50%': { backgroundColor: '#92a4c1' },
+          '0%, 100%': { backgroundColor: '#92a4c1' },
+          '50%': { backgroundColor: '#697c9a' },
         },
       },
       animation: {
