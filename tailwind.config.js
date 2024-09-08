@@ -12,7 +12,7 @@ export default {
         DEFAULT: '1rem',
         xs: '1.5rem',
         sm: '6.125rem',
-        md: '22.188rem'
+        md: '21.188rem'
       },
       // screens: {
       //   // xs: '100%',
@@ -24,7 +24,7 @@ export default {
       keyframes: {
         colorChange: {
           '0%, 100%': { backgroundColor: '#92a4c1' },
-          '50%': { backgroundColor: '#697c9a' },
+          '50%': { backgroundColor: '#ffffff' },
         },
       },
       animation: {
@@ -46,6 +46,7 @@ export default {
         'space-mono': ['Space Mono', 'monospace'],
       },
       colors: {
+        'custom-red': '#F74646',
         // Light Mode Colors:
         'blue-primary': '#0079FF',
         'blue-secondary': '#60ABFF',

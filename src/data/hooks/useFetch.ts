@@ -4,7 +4,7 @@ function useFetch<T>(url: string) {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const token = "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"
+  const token = "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"
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -18,6 +18,7 @@ function useFetch<T>(url: string) {
         }
         const result = await response.json();
         setData(result);
+        setError(null)
       } catch (error) {
         setError((error as Error).message);
       } finally {
