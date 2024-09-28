@@ -4,11 +4,16 @@ function useFetch<T>(url: string) {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const token = "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"
+
+  const token = import.meta.env.VITE_GITHUB_TOKEN;
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(url, {
+        if (!token) {
+          throw new Error("GitHub token is missing.");
+        }
+        const response = await fetch(url ? url: "https://api.github.com/users/octocat", {
           headers: {
             'Authorization': `token ${token}`
           }
@@ -27,7 +32,7 @@ function useFetch<T>(url: string) {
     };
 
     fetchData();
-  }, [url]);
+  }, [url, token]);
 
   return { data, loading, error };
 }
